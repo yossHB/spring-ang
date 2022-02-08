@@ -3,17 +3,15 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Employee} from "./employee";
 import {environment} from "../environments/environment";
-
-@Injectable({
-  providedIn: 'root'
-})
+import { baseUrl } from './shared/baseUrl';
+@Injectable({  providedIn: 'root'  })
 export class EmployeeService {
   private apiServerUrl=environment.apiBaseUrl;
 
   constructor(private http: HttpClient) {}
 
   public getEmployee():Observable<Employee[]>{
-    return this.http.get<Employee[]>(`${this.apiServerUrl}/employee/all`)
+    return this.http.get<Employee[]>(`${baseUrl}/employee/all`);
 
   }
 
